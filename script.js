@@ -4,62 +4,45 @@ const detail = [
 	["Jenish", "Arshit", "Priya"],
 	"Arshit",
 	"Heet",
-	["Khushbu", "Jenish", "Priya", ["Jagat", "priya"]],
+	null,
+	undefined,
+	[undefined, [], [null]],
+     [],
+	["Khushbu", "Jenish", "Priya", ["Jagat", "priya"], ['Bhut', 'Bhumi']],
 ];
 
-document.write("Original String");
-document.write(" ----- Reversed String<br />");
+console.log(reverseArray(detail));
+/*  Using Recursive Function */
 
-// Using Recursive Function
+// Function for  reverse array
 function reverseArray(arr) {
-	for (let index = arr.length - 1; index >= 0; index--) {
-		var reversedString = "";
+	const reversedArray = [];
 
+	for (let index = arr.length - 1; index >= 0; index--) {
 		// If array in array
 		if (Array.isArray(arr[index])) {
-			reverseArray(arr[index]);
+			let subArr = reverseArray(arr[index]);
+			reversedArray.push(subArr);
 		} else {
-			// Loop for String Reverse
-			for (
-				let stringIndex = arr[index].length - 1;
-				stringIndex >= 0;
-				stringIndex--
-			) {
-				reversedString += arr[index][stringIndex];
-				console.log(reversedString);
-			}
-			
-               // Print original array
-			document.write(arr[index]);
-
-			// Print reverse array
-			document.write(" ----- " + reversedString);
-			document.write("<br />");
+			let reversedString = reverseString(arr[index]);
+			reversedArray.push(reversedString);
 		}
+	}
+	return reversedArray;
+}
+// Function for reverse string
+function reverseString(str) {
+	var reversedString = "";
+	if (str == null) {
+		return str;
+	} else {
+		for (
+			let stringIndex = str.length - 1;
+			stringIndex >= 0;
+			stringIndex--
+		) {
+			reversedString += str[stringIndex];
+		}
+		return reversedString;
 	}
 }
-// Call function
-reverseArray(detail);
-
-// Multiple loop with limitation of multiple array
-
-/* // Loop for reverse the array
-for (let index = detail.length - 1; index >= 0; index--) {
-	var reversedString = "";
-
-	// Loop for String Reverse
-	for (
-		let stringIndex = detail[index].length - 1;
-		stringIndex >= 0;
-		stringIndex--
-	) {
-		// Loop for array in array
-		for (let J = detail[index][stringIndex].length - 1; J >= 0; J--) {
-			reversedString += detail[index][stringIndex][J];
-		}
-	}
-
-	// Print reverse array
-     document.write(reversedString);
-     document.write("<br />");
-} */
