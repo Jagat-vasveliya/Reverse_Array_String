@@ -1,14 +1,14 @@
 // Array of name
 const detail = [
 	"Jagat",
-	["Jenish", "Arshit", "Priya"],
+	["Jenish", "Arshit", ""],
 	"Arshit",
 	"Heet",
 	null,
 	undefined,
 	[undefined, [], [null]],
      [],
-	["Khushbu", "Jenish", "Priya", ["Jagat", "priya"], ['Bhut', 'Bhumi']],
+	["Khushbu", "Priya", ["Jagat"], ['', 'Bhumi']],
 ];
 
 console.log(reverseArray(detail));
